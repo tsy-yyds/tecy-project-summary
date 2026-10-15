@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TECY 项目总汇 · tsy-yyds</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b1226'/%3E%3Cpath d='M8 10a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V10z' fill='none' stroke='%2338bdf8' stroke-width='2'/%3E%3Cpath d='M12 12h8M12 16h8M12 20h5' stroke='%2338bdf8' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap">
+<style>
+:root{
+  --bg0:#080e1e; --bg1:#0d1730; --card:#111c36; --card2:#0e1830;
+  --line:#1e2c4a; --txt:#e7eefb; --sub:#9db0d0; --dim:#6b7ea0;
+  --blue:#3b82f6; --cyan:#38bdf8; --green:#34d399; --amber:#fbbf24;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:radial-gradient(1200px 600px at 80% -10%, #132650 0%, transparent 60%),
+             radial-gradient(900px 500px at -10% 20%, #0f2347 0%, transparent 55%),
+             linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 100%);
+  color:var(--txt);
+  font-family:"Noto Sans SC", "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+  line-height:1.6;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* hero */
+.hero{padding:56px 0 30px;text-align:center}
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;letter-spacing:.18em;color:var(--cyan);
+  border:1px solid #24406b;border-radius:999px;padding:6px 16px;margin-bottom:18px;
+  background:rgba(56,189,248,.06)
+}
+.hero h1{font-size:clamp(34px,6vw,56px);font-weight:900;letter-spacing:.02em;line-height:1.15}
+.hero h1 span{background:linear-gradient(90deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{color:var(--sub);margin-top:12px;font-size:15px}
+.stats{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:28px}
+.stat{
+  flex:1 1 130px;max-width:200px;background:var(--card);border:1px solid var(--line);
+  border-radius:14px;padding:14px 10px;text-align:center
+}
+.stat b{display:block;font-size:26px;font-weight:900;color:var(--cyan)}
+.stat span{font-size:12.5px;color:var(--sub)}
+
+/* sections */
+.sec{margin:34px 0 12px;font-size:20px;font-weight:700;display:flex;align-items:center;gap:10px}
+.sec::before{content:"";width:5px;height:22px;border-radius:3px;background:linear-gradient(180deg,var(--blue),var(--cyan))}
+.sec .hint{font-size:12px;font-weight:400;color:var(--dim)}
+
+/* cards */
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:22px;box-shadow:0 10px 30px rgba(2,8,26,.35)}
+.card-head{display:flex;align-items:flex-start;gap:14px}
+.ico{
+  flex:none;width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#1b3a6b,#0f2444);border:1px solid #2a4a80
+}
+.ico svg{width:24px;height:24px;stroke:var(--cyan)}
+.card-head h3{font-size:19px;font-weight:700}
+.badges{margin-top:4px;display:flex;flex-wrap:wrap;gap:6px}
+.badge{font-size:11.5px;padding:3px 9px;border-radius:6px;border:1px solid var(--line);color:var(--sub);background:#0d1a33}
+.badge.ver{color:#091224;background:var(--cyan);border-color:var(--cyan);font-weight:600}
+.desc{margin:12px 0;font-size:14px;color:var(--sub)}
+.feats{margin:10px 0 14px;display:flex;flex-wrap:wrap;gap:6px}
+.feat{font-size:12px;color:#c6d5ee;background:#152348;border:1px solid #223660;border-radius:999px;padding:3px 11px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 18px}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;
+  padding:9px 16px;border-radius:10px;border:1px solid #2a4a80;color:#cfe3ff;background:#13264a;
+  transition:all .15s
+}
+.btn:hover{background:#1a3564;border-color:#3a63a8;text-decoration:none;transform:translateY(-1px)}
+.btn.dl{background:linear-gradient(90deg,var(--blue),#2f6bdc);border-color:transparent;color:#fff}
+.btn.dl:hover{filter:brightness(1.12)}
+.btn svg{width:15px;height:15px}
+.btn.site{background:#13264a}
+
+/* file table */
+.ft{width:100%;border-collapse:collapse;table-layout:fixed;font-size:13px}
+.ft th{color:var(--dim);font-weight:500;text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);font-size:12px}
+.ft td{padding:8px;border-bottom:1px solid #16233f;color:var(--txt)}
+.ft tr:last-child td{border-bottom:none}
+.ft td:first-child{width:58%;word-break:break-all}
+.ft td:nth-child(2){width:14%;color:var(--sub)}
+.ft td:last-child{width:28%;text-align:right}
+.ft a.dl2{
+  display:inline-block;font-size:12px;font-weight:600;color:#fff;
+  background:var(--blue);padding:5px 12px;border-radius:8px
+}
+.ft a.dl2:hover{filter:brightness(1.15);text-decoration:none}
+.note{margin-top:10px;font-size:12px;color:var(--dim)}
+
+/* timeline */
+.tl{position:relative;margin:18px 0 6px;padding-left:22px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--blue),var(--cyan))}
+.tl-item{position:relative;padding:0 0 20px 16px}
+.tl-item::before{content:"";position:absolute;left:-19px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--cyan);border:2px solid #0d1730;box-shadow:0 0 0 2px #1b3a6b;box-sizing:border-box}
+.tl-item .t{font-size:12.5px;color:var(--dim);font-weight:600;letter-spacing:.05em}
+.tl-item .e{font-size:14px;margin-top:2px}
+.tl-item .d{font-size:12.5px;color:var(--sub)}
+
+/* footer */
+.footer{margin-top:44px;padding:26px 0 40px;border-top:1px solid var(--line);color:var(--dim);font-size:12.5px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center}
+.footer a{color:var(--sub)}
+@media (max-width:560px){
+  .hero{padding:40px 0 22px}
+  .ft td:first-child{width:52%}
+  .ft td:nth-child(2){width:15%}
+  .ft td:last-child{width:33%}
+}
+</style>
+</head>
+<body>
+
+<header class="hero wrap">
+  <div class="kicker">tsy-yyds · 个人项目仓库</div>
+  <h1>TECY <span>项目总汇</span></h1>
+  <p class="sub">个人开发的全部项目汇总：网络打印、桌面便签、多功能工具箱、网页小工具与独立游戏<br>全部开源在 GitHub，安装包可直接下载</p>
+  <div class="stats" id="stats"></div>
+</header>
+
+<main class="wrap">
+  <h2 class="sec">项目列表 <span class="hint">点击下载安装包，无需注册</span></h2>
+  <div id="cards"></div>
+
+  <h2 class="sec">开发历程</h2>
+  <div class="tl" id="timeline"></div>
+</main>
+
+<footer class="wrap footer">
+  <div>© 2026 tsy-yyds · TECY 项目总汇 · 页面数据取自各仓库 Releases</div>
+  <div><a href="https://github.com/tsy-yyds" target="_blank" rel="noopener">GitHub 主页</a> · <a href="https://github.com/tsy-yyds/tecy-project-summary" target="_blank" rel="noopener">本页源码</a></div>
+</footer>
+
+<script>
+/* ===== 数据（真实，来自各仓库与本地工程文件） ===== */
+var STATS = [
+  {n:"5", l:"个人项目"},
+  {n:"7", l:"公开仓库"},
+  {n:"12", l:"可下载安装包"},
+  {n:"约0.9 GB", l:"下载资源总量"}
+];
+
+var PROJECTS = [
+  {
+    icon:"print",
+    name:"共享打印 · Web Print Server",
+    ver:"v2.0",
+    date:"2026-10",
+    desc:"把电脑上的 USB 打印机，变成手机和电脑都能用的网络打印机。打印机不需要支持网络打印，电脑也不需要公网 IP，免费、免注册、开源。网页版直接使用，另有安卓 App 和电脑桌面客户端。",
+    feats:["打印 PDF / 图片 / Word / Excel / PPT","手动双面打印","打印到 PDF 并可下载","PWA 手机套壳 + 安卓 App","独立电脑桌面客户端","外网穿透（cpolar / Tailscale）","访问密码 PIN"],
+    tech:["Python Flask","PyMuPDF","pywin32","PWA","pywebview","Android"],
+    site:"https://tsy-yyds.github.io/webprint-server/",
+    repo:"https://github.com/tsy-yyds/webprint-server",
+    files:[
+      {n:"webprint-server.exe", s:"45.2 MB", u:"https://github.com/tsy-yyds/webprint-server/releases/download/v2.0/webprint-server.exe", d:"服务端：装在打印电脑上，双击即用，免装 Python"},
+      {n:"webprint-desktop-v2.exe", s:"47.7 MB", u:"https://github.com/tsy-yyds/webprint-server/releases/download/v2.0/webprint-desktop-v2.exe", d:"电脑端桌面应用（v2.0）"},
+      {n:"webprint-desktop.exe", s:"12.9 MB", u:"https://github.com/tsy-yyds/webprint-server/releases/download/v2.0/webprint-desktop.exe", d:"电脑端桌面版（旧版）"},
+      {n:"webprint.apk", s:"33 KB", u:"https://github.com/tsy-yyds/webprint-server/releases/download/v2.0/webprint.apk", d:"安卓手机 App，直接安装"}
+    ],
+    note:"网页版无需安装：访问官网即可使用"
+  },
+  {
+    icon:"note",
+    name:"悬浮便签 · DeskNote",
+    ver:"v1.0",
+    date:"2026",
+    desc:"一个常驻桌面、开机自启的悬浮便签软件。便签像便利贴一样贴在屏幕上，随时记录、随时查看，关掉后内容自动保存。单文件 exe，双击即用。",
+    feats:["置顶：永远浮在最上层","贴边隐藏：拖到边缘自动收起","6 档透明度可调","6 种便签颜色","多张便签独立记录","停顿一秒自动保存","20 种字体可选"],
+    tech:["Python 3.14","tkinter","PyInstaller"],
+    site:null,
+    repo:"https://github.com/tsy-yyds/desknote",
+    files:[
+      {n:"desknote.exe", s:"21.5 MB", u:"https://github.com/tsy-yyds/desknote/releases/download/v1.0/desknote.exe", d:"单文件版，双击运行"}
+    ],
+    note:"源码与打包配置见仓库 main 分支"
+  },
+  {
+    icon:"tool",
+    name:"多功能实用工具箱",
+    ver:"v3.0",
+    date:"2026-08-26",
+    desc:"一站式桌面工具箱，深蓝主色、左侧导航 + 右侧内容、卡片式界面（仿火绒安全软件）。整合十余个常用工具，另有游戏空间、进程锁定、应用包密码工具等子程序。",
+    feats:["文件批量重命名","图片格式转换","二维码生成器","8 大类单位换算","番茄钟（专注统计）","系统信息实时监控","音乐 / 短视频无水印下载","PDF 合并 / 拆分 / 提取 / 转图 / 转Word","文件校验","腾讯进程管家","游戏空间 · 进程锁定 · 应用包密码工具"],
+    tech:["Python","CustomTkinter","PyQt5","tkinter","PyInstaller","yt-dlp"],
+    site:null,
+    repo:"https://github.com/tsy-yyds/tecy-toolbox",
+    files:[
+      {n:"tecy-toolbox-installer.exe", s:"276.3 MB", u:"https://github.com/tsy-yyds/tecy-toolbox/releases/download/v3.0/tecy-toolbox-installer.exe", d:"v3.0 一键安装版（含全部集成工具）"},
+      {n:"tecy-toolbox.zip", s:"21.3 MB", u:"https://github.com/tsy-yyds/tecy-toolbox/releases/download/v3.0/tecy-toolbox.zip", d:"v3.0 绿色免安装版"},
+      {n:"tecy-toolbox-full.7z", s:"61.8 MB", u:"https://github.com/tsy-yyds/tecy-toolbox/releases/download/v3.0/tecy-toolbox-full.7z", d:"完整压缩包（含 ffmpeg）"},
+      {n:"tecy-toolbox-v2.7.zip", s:"21.3 MB", u:"https://github.com/tsy-yyds/tecy-toolbox/releases/download/v3.0/tecy-toolbox-v2.7.zip", d:"上一版 v2.7 绿色包"},
+      {n:"tecy-toolbox-v1.0.zip", s:"21.2 MB", u:"https://github.com/tsy-yyds/tecy-toolbox/releases/download/v3.0/tecy-toolbox-v1.0.zip", d:"历史初版 v1.0"},
+      {n:"tecy-toolbox-backup.7z", s:"148.8 MB", u:"https://github.com/tsy-yyds/tecy-toolbox/releases/download/v3.0/tecy-toolbox-backup.7z", d:"项目完整备份"}
+    ],
+    note:"主程序源码（main.py + tools/ 全部模块）在仓库 main 分支"
+  },
+  {
+    icon:"pin",
+    name:"GPS 定位 HTML 前端",
+    ver:"在线",
+    date:"2026-10",
+    desc:"一组单页 HTML 小工具，浏览器打开即用、无需安装。包含基于浏览器定位的互动页与密文解密工具，全部开源可部署为网页。",
+    feats:["小纸条（夸人 · 定位主文件）—— Geolocation 定位互动页","密文解密 —— 单页解密小工具","纯前端，打开即用"],
+    tech:["HTML","JavaScript","Geolocation"],
+    site:"https://tsy-yyds.github.io/gps-html/",
+    repo:"https://github.com/tsy-yyds/gps-html",
+    files:[],
+    note:"纯网页项目，无安装包；打开上方在线预览即可使用"
+  },
+  {
+    icon:"game",
+    name:"HorrorEscape 恐怖逃脱",
+    ver:"v1.0.1",
+    date:"2026-09-19",
+    desc:"恐怖逃脱游戏（Windows 桌面应用），独立发布的第一个游戏项目。",
+    feats:["Windows 桌面游戏","Setup 安装包发布","Cloudflare Pages 官网"],
+    tech:["Windows 桌面应用"],
+    site:"https://horrorescape-tsy.pages.dev/",
+    repo:"https://github.com/tsy-yyds/HorrorEscape",
+    files:[
+      {n:"HorrorEscape-Setup-1.0.1.exe", s:"242.0 MB", u:"https://github.com/tsy-yyds/HorrorEscape/releases/download/v1.0.1/HorrorEscape-Setup-1.0.1.exe", d:"v1.0.1 测试版安装包"}
+    ],
+    note:null
+  }
+];
+
+var TIMELINE = [
+  {t:"2026-08-26", e:"多功能实用工具箱 v3.0 整合升级版交付", d:"主程序 + 游戏空间 / 进程锁定 / 应用包密码工具整合完成"},
+  {t:"2026-09-19", e:"HorrorEscape v1.0.1 发布", d:"第一个游戏项目上线，带安装包与官网"},
+  {t:"2026-10-02", e:"共享打印 webprint-server 仓库建立", d:"USB 打印机变网络打印机的完整方案"},
+  {t:"2026-10-11", e:"共享打印 v2.0 官网生效", d:"GitHub Pages 部署，电脑端 v2.0 / APK v2.0 发布"},
+  {t:"2026-10-15", e:"全部项目上架 GitHub + 本汇总页上线", d:"便签 / 工具箱 / GPS 前端新建仓库，各项目安装包发布到 Releases，可直接下载"}
+];
+
+/* ===== 图标 ===== */
+var ICONS = {
+  print:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7"/></svg>',
+  note:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M4 6h.01M4 12h.01M4 18h.01"/></svg>',
+  tool:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/></svg>',
+  pin:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+  game:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 11h4M8 9v4"/><path d="M15.5 12h.01M17.5 14.5h.01"/><path d="M17.3 5H6.7a5 5 0 0 0-4.9 4L.9 13a3 3 0 0 0 5 2.7L7.5 14h9l1.6 1.7a3 3 0 0 0 5-2.7l-.9-4A5 5 0 0 0 17.3 5z"/></svg>',
+  dl:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>',
+  link:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>',
+  repo:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.7 3.7 0 0 0-1-2.9c3-.3 6-1.5 6-6.5a5 5 0 0 0-1.4-3.5 4.6 4.6 0 0 0-.1-3.5s-1.1-.3-3.5 1.3a12 12 0 0 0-6 0C6.5 2.4 5.4 2.7 5.4 2.7a4.6 4.6 0 0 0-.1 3.5A5 5 0 0 0 4 9.7c0 5 3 6.2 6 6.5a3.7 3.7 0 0 0-1 2.9V22"/></svg>'
+};
+
+function el(html){var d=document.createElement('div');d.innerHTML=html.trim();return d.firstChild;}
+
+function renderStats(){
+  var box=document.getElementById('stats');
+  STATS.forEach(function(s){
+    var d=el('<div class="stat"><b>'+s.n+'</b><span>'+s.l+'</span></div>');
+    box.appendChild(d);
+  });
+}
+
+function renderCards(){
+  var box=document.getElementById('cards');
+  PROJECTS.forEach(function(p){
+    var links='';
+    if(p.site){links+='<a class="btn site" href="'+p.site+'" target="_blank" rel="noopener">'+ICONS.link+'官网 / 在线预览</a>';}
+    links+='<a class="btn" href="'+p.repo+'" target="_blank" rel="noopener">'+ICONS.repo+'源码仓库</a>';
+
+    var feats='';
+    p.feats.forEach(function(f){feats+='<span class="feat">'+f+'</span>';});
+
+    var tech='';
+    p.tech.forEach(function(t){tech+='<span class="badge">'+t+'</span>';});
+
+    var rows='';
+    if(p.files && p.files.length){
+      p.files.forEach(function(f){
+        rows+='<tr><td>'+f.n+'<div style="color:var(--dim);font-size:11.5px;margin-top:2px">'+f.d+'</div></td><td>'+f.s+'</td><td><a class="dl2" href="'+f.u+'" target="_blank" rel="noopener">下载</a></td></tr>';
+      });
+    } else {
+      rows='<tr><td colspan="3" style="color:var(--dim)">无安装包（纯网页项目）</td></tr>';
+    }
+
+    var note=p.note?'<div class="note">'+p.note+'</div>':'';
+    var card=el(
+      '<article class="card">'+
+        '<div class="card-head">'+
+          '<div class="ico">'+ICONS[p.icon]+'</div>'+
+          '<div><h3>'+p.name+'</h3>'+
+          '<div class="badges"><span class="badge ver">'+p.ver+'</span><span class="badge">'+p.date+'</span>'+tech+'</div></div>'+
+        '</div>'+
+        '<p class="desc">'+p.desc+'</p>'+
+        '<div class="feats">'+feats+'</div>'+
+        '<div class="links">'+links+'</div>'+
+        '<table class="ft"><colgroup><col style="width:58%"><col style="width:14%"><col style="width:28%"></colgroup>'+
+        '<thead><tr><th>文件</th><th>大小</th><th style="text-align:right">下载</th></tr></thead><tbody>'+rows+'</tbody></table>'+
+        note+
+      '</article>'
+    );
+    box.appendChild(card);
+  });
+}
+
+function renderTimeline(){
+  var box=document.getElementById('timeline');
+  TIMELINE.forEach(function(i){
+    var d=el('<div class="tl-item"><div class="t">'+i.t+'</div><div class="e">'+i.e+'</div><div class="d">'+i.d+'</div></div>');
+    box.appendChild(d);
+  });
+}
+
+renderStats();
+renderCards();
+renderTimeline();
+</script>
+</body>
+</html>
