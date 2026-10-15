@@ -4,79 +4,183 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TECY 项目总汇 · tsy-yyds</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231d1d1f'/%3E%3Cpath d='M9 11h14M9 16h14M9 21h8' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ff6700'/%3E%3Cpath d='M9 11h14M9 16h14M9 21h8' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;
-  color:#1d1d1f;background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;color:#1d1d1f;background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{text-decoration:none}
+
+/* ===== 顶部导航 ===== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;height:56px;
+  background:rgba(13,15,19,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  color:#fff
 }
-.wrap{max-width:760px;margin:0 auto;padding:0 28px}
+nav .logo{font-size:19px;font-weight:700;letter-spacing:.02em;color:#fff;display:flex;align-items:center;gap:8px}
+nav .logo i{width:22px;height:22px;border-radius:5px;background:#ff6700;display:inline-block;position:relative}
+nav .logo i::before{content:"";position:absolute;left:5px;top:6px;right:5px;height:2px;background:#fff;box-shadow:0 5px 0 #fff,0 10px 0 #fff}
+nav .links{display:flex;gap:26px;font-size:14px}
+nav .links a{color:#e8e8ea}
+nav .links a:hover{color:#ff6700}
 
-header{text-align:center;padding:96px 0 54px}
-h1{font-size:44px;font-weight:700;letter-spacing:-.02em}
-.tagline{margin-top:14px;font-size:17px;color:#86868b}
-
-main{padding:6px 0 30px}
-.app{border-top:1px solid #d2d2d7}
-a.row{
-  display:flex;align-items:center;gap:18px;padding:26px 4px;text-decoration:none;color:#1d1d1f;
-  transition:background .15s
+/* ===== Hero ===== */
+.hero{
+  position:relative;min-height:78vh;display:flex;align-items:center;
+  background:url("assets/hero-print.jpg") center/cover no-repeat #0c1220;
+  color:#fff;overflow:hidden
 }
-a.row:hover{background:#f5f5f7}
-.row .info{flex:1;min-width:0}
-.row .name{font-size:20px;font-weight:600;letter-spacing:-.01em}
-.row .desc{color:#86868b;font-size:14.5px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.row .ver{flex:none;font-size:12.5px;color:#86868b;border:1px solid #d2d2d7;border-radius:999px;padding:2px 12px}
-.row .arr{flex:none;color:#0071e3;font-size:20px;line-height:1}
-a.row:hover .arr{transform:translateX(3px)}
-.arr{transition:transform .15s}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,12,22,.82) 0%,rgba(8,12,22,.45) 45%,rgba(8,12,22,.12) 100%)}
+.hero .inner{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 40px;width:100%}
+.eyebrow{font-size:13px;letter-spacing:.3em;color:#ff9a5c;text-transform:uppercase;font-weight:600}
+.hero h1{font-size:clamp(40px,6vw,68px);font-weight:800;letter-spacing:-.02em;margin-top:16px;line-height:1.08}
+.hero .sub{margin-top:18px;font-size:clamp(16px,2vw,20px);color:#cfd6e4;max-width:560px}
+.hero .ctas{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;font-size:15px;font-weight:600;padding:13px 30px;border-radius:2px;transition:opacity .15s}
+.btn.orange{background:#ff6700;color:#fff}
+.btn.orange:hover{opacity:.88}
+.btn.ghost{border:1px solid rgba(255,255,255,.55);color:#fff}
+.btn.ghost:hover{background:rgba(255,255,255,.14)}
+.hero .stats{position:relative;z-index:2;max-width:1240px;margin:44px auto 0;padding:0 40px;display:flex;gap:44px;color:#fff}
+.hero .stats b{display:block;font-size:24px;font-weight:700}
+.hero .stats span{font-size:12.5px;color:#9aa7bd}
 
-footer{padding:52px 0 72px;border-top:1px solid #d2d2d7;margin-top:40px;color:#86868b;font-size:13px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
-footer a{color:#1d1d1f;text-decoration:none}
+/* ===== 产品网格 ===== */
+.sec-head{max-width:1240px;margin:0 auto;padding:76px 40px 8px}
+.sec-head h2{font-size:30px;font-weight:700;letter-spacing:-.01em}
+.sec-head p{color:#86868b;margin-top:8px;font-size:15px}
+.grid{max-width:1240px;margin:0 auto;padding:30px 40px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{
+  display:block;background:#fff;border:1px solid #f0f0f2;border-radius:4px;overflow:hidden;color:#1d1d1f;
+  transition:transform .2s,box-shadow .2s
+}
+.card:hover{transform:translateY(-5px);box-shadow:0 16px 44px rgba(0,0,0,.09);border-color:#e6e6ea}
+.card .pic{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0c1220}
+.card .pic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+.card:hover .pic img{transform:scale(1.05)}
+.card .pic .tag{
+  position:absolute;top:14px;left:14px;font-size:12px;font-weight:600;color:#fff;
+  background:rgba(0,0,0,.55);padding:4px 12px;border-radius:999px;backdrop-filter:blur(6px)
+}
+.card .body{padding:22px 20px 24px}
+.card .body h3{font-size:19px;font-weight:700}
+.card .body .d{color:#86868b;font-size:14px;margin-top:7px;min-height:44px}
+.card .go{display:inline-block;margin-top:16px;font-size:14.5px;font-weight:600;color:#ff6700}
+.card .go::after{content:" →";transition:margin-left .15s}
+.card:hover .go::after{margin-left:5px}
+
+/* ===== 深色横幅 ===== */
+.banner{
+  position:relative;margin:70px 40px 0;border-radius:6px;overflow:hidden;color:#fff;min-height:340px;
+  background:url("assets/app-toolbox.jpg") center/cover no-repeat #0c1220;
+  display:flex;align-items:center
+}
+.banner::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,14,24,.9) 20%,rgba(10,14,24,.35) 100%)}
+.banner .inner{position:relative;z-index:2;padding:52px 48px;max-width:620px}
+.banner .eyebrow{color:#7cc4ff}
+.banner h2{font-size:32px;font-weight:700;margin-top:12px;letter-spacing:-.01em}
+.banner p{color:#c7d2e4;margin-top:12px;font-size:15px}
+.banner .btn{margin-top:28px}
+
+/* ===== Footer ===== */
+footer{max-width:1240px;margin:0 auto;padding:54px 40px 64px;color:#86868b;font-size:13px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+footer a{color:#1d1d1f}
 footer a:hover{text-decoration:underline}
 
-@media (max-width:560px){
-  header{padding:64px 0 40px}
-  h1{font-size:34px}
-  .tagline{font-size:15px}
-  .row .name{font-size:17px}
-  .row .desc{white-space:normal}
+@media (max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr);gap:16px}
+}
+@media (max-width:600px){
+  nav{padding:0 16px}
+  nav .links{display:none}
+  .hero{min-height:66vh}
+  .hero .inner,.hero .stats{padding:0 20px}
+  .hero .stats{gap:24px;flex-wrap:wrap}
+  .sec-head{padding:56px 20px 8px}
+  .grid{grid-template-columns:1fr;padding:22px 20px 10px}
+  .banner{margin:50px 16px 0}
+  .banner .inner{padding:36px 26px}
+  footer{padding:40px 20px 50px}
 }
 </style>
 </head>
 <body>
+<span id="top"></span>
 
-<header class="wrap">
-  <h1>TECY 项目总汇</h1>
-  <p class="tagline">个人开发的应用 · 全部开源 · 每个应用都有官网</p>
+<nav>
+  <a class="logo" href="#top"><i></i>TECY</a>
+  <div class="links">
+    <a href="#apps">全部应用</a>
+    <a href="#toolbox">工具箱</a>
+    <a href="https://github.com/tsy-yyds" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="inner">
+    <div class="eyebrow">TECY · PERSONAL PROJECTS</div>
+    <h1>TECY 项目总汇</h1>
+    <p class="sub">个人开发的 5 个应用，全部开源，每个应用都有官网。<br>网络打印、桌面便签、多功能工具箱、网页小工具与独立游戏。</p>
+    <div class="ctas">
+      <a class="btn orange" href="#apps">浏览全部应用</a>
+      <a class="btn ghost" href="https://github.com/tsy-yyds" target="_blank" rel="noopener">访问 GitHub</a>
+    </div>
+  </div>
+  <div class="stats">
+    <div><b>5</b><span>个人应用</span></div>
+    <div><b>7</b><span>公开仓库</span></div>
+    <div><b>12</b><span>可下载安装包</span></div>
+    <div><b>约 0.9GB</b><span>下载资源总量</span></div>
+  </div>
 </header>
 
-<main class="wrap" id="apps"></main>
+<section class="sec-head" id="apps">
+  <h2>全部应用</h2>
+  <p>点进应用官网即可下载，提供 GitHub 与国内加速多线路</p>
+</section>
 
-<footer class="wrap">
+<main class="grid">
+  <a class="card" href="https://tsy-yyds.github.io/webprint-server/" target="_blank" rel="noopener">
+    <div class="pic"><img src="assets/app-print.jpg" alt="共享打印 · Web Print Server"><span class="tag">v2.0</span></div>
+    <div class="body"><h3>共享打印 · Web Print Server</h3><div class="d">USB 打印机秒变网络打印机，手机电脑都能打，免装驱动免注册</div><span class="go">了解详情</span></div>
+  </a>
+  <a class="card" href="https://tsy-yyds.github.io/desknote/" target="_blank" rel="noopener">
+    <div class="pic"><img src="assets/app-note.jpg" alt="悬浮便签 · DeskNote"><span class="tag">v1.0</span></div>
+    <div class="body"><h3>悬浮便签 · DeskNote</h3><div class="d">常驻桌面、开机自启的悬浮便签，随时记录随时看，关闭自动保存</div><span class="go">了解详情</span></div>
+  </a>
+  <a class="card" href="https://tsy-yyds.github.io/tecy-toolbox/" target="_blank" rel="noopener">
+    <div class="pic"><img src="assets/app-toolbox.jpg" alt="多功能实用工具箱"><span class="tag">v3.0</span></div>
+    <div class="body"><h3>多功能实用工具箱</h3><div class="d">十余个工具一站式打包：下载、PDF、重命名、番茄钟……</div><span class="go">了解详情</span></div>
+  </a>
+  <a class="card" href="https://tsy-yyds.github.io/gps-html/" target="_blank" rel="noopener">
+    <div class="pic"><img src="assets/app-gps.jpg" alt="GPS 定位 HTML 前端"><span class="tag">在线</span></div>
+    <div class="body"><h3>GPS 定位 HTML 前端</h3><div class="d">浏览器定位互动页 + 密文解密，纯网页小工具，打开即用</div><span class="go">了解详情</span></div>
+  </a>
+  <a class="card" href="https://horrorescape-tsy.pages.dev/" target="_blank" rel="noopener">
+    <div class="pic"><img src="assets/app-horror.jpg" alt="HorrorEscape 恐怖逃脱"><span class="tag">v1.0.1</span></div>
+    <div class="body"><h3>HorrorEscape 恐怖逃脱</h3><div class="d">Windows 恐怖逃脱游戏，独立发布的第一个游戏项目</div><span class="go">了解详情</span></div>
+  </a>
+  <a class="card" href="https://github.com/tsy-yyds" target="_blank" rel="noopener">
+    <div class="pic"><img src="assets/hero-print.jpg" alt="GitHub 主页"><span class="tag">tsy-yyds</span></div>
+    <div class="body"><h3>GitHub 主页</h3><div class="d">查看全部 7 个公开仓库与全部源码</div><span class="go">前往查看</span></div>
+  </a>
+</main>
+
+<section class="banner" id="toolbox">
+  <div class="inner">
+    <div class="eyebrow">主打应用</div>
+    <h2>多功能实用工具箱 v3.0</h2>
+    <p>十余个工具一站式打包：音乐与短视频无水印下载、PDF 全套处理、批量重命名、二维码、单位换算、番茄钟、系统监控……另有游戏空间、进程锁定等子程序。</p>
+    <a class="btn orange" href="https://tsy-yyds.github.io/tecy-toolbox/" target="_blank" rel="noopener">进入工具箱官网</a>
+  </div>
+</section>
+
+<footer>
   <div>© 2026 tsy-yyds · TECY 项目总汇</div>
-  <div><a href="https://github.com/tsy-yyds" target="_blank" rel="noopener">GitHub 主页</a></div>
+  <div><a href="https://github.com/tsy-yyds" target="_blank" rel="noopener">GitHub 主页</a> · <a href="https://github.com/tsy-yyds/tecy-project-summary" target="_blank" rel="noopener">本页源码</a></div>
 </footer>
 
-<script>
-var APPS = [
-  {name:"共享打印 · Web Print Server", desc:"USB 打印机秒变网络打印机，手机电脑都能打", ver:"v2.0", url:"https://tsy-yyds.github.io/webprint-server/"},
-  {name:"悬浮便签 · DeskNote", desc:"常驻桌面、开机自启的悬浮便签，随时记录随时看", ver:"v1.0", url:"https://tsy-yyds.github.io/desknote/"},
-  {name:"多功能实用工具箱", desc:"十余个工具一站式打包：下载、PDF、重命名、番茄钟……", ver:"v3.0", url:"https://tsy-yyds.github.io/tecy-toolbox/"},
-  {name:"GPS 定位 HTML 前端", desc:"浏览器定位互动页 + 密文解密，纯网页小工具", ver:"在线", url:"https://tsy-yyds.github.io/gps-html/"},
-  {name:"HorrorEscape 恐怖逃脱", desc:"Windows 恐怖逃脱游戏", ver:"v1.0.1", url:"https://horrorescape-tsy.pages.dev/"}
-];
-
-var box=document.getElementById('apps');
-APPS.forEach(function(a){
-  var s=document.createElement('section');
-  s.className='app';
-  s.innerHTML='<a class="row" href="'+a.url+'" target="_blank" rel="noopener">'+
-    '<div class="info"><div class="name">'+a.name+'</div><div class="desc">'+a.desc+'</div></div>'+
-    '<span class="ver">'+a.ver+'</span><span class="arr" aria-hidden="true">→</span></a>';
-  box.appendChild(s);
-});
-</script>
 </body>
 </html>
