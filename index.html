@@ -104,6 +104,40 @@ footer a:hover{text-decoration:underline}
   .banner .inner{padding:36px 26px}
   footer{padding:40px 20px 50px}
 }
+
+/* ===== 灵动特效 ===== */
+#px{position:absolute;inset:0;z-index:1;pointer-events:none}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;z-index:3;background:linear-gradient(90deg,transparent,#ff9a5c,#7cc4ff,transparent);filter:blur(1px);opacity:0;animation:beam 5s ease-in-out infinite}
+@keyframes beam{0%,100%{transform:translateX(-34%);opacity:.35}50%{transform:translateX(34%);opacity:.9}}
+.hero .inner>*{opacity:0;transform:translateY(28px);animation:heroFade .85s cubic-bezier(.22,.68,.24,1) forwards}
+.hero .inner>*:nth-child(1){animation-delay:.08s}
+.hero .inner>*:nth-child(2){animation-delay:.18s}
+.hero .inner>*:nth-child(3){animation-delay:.3s}
+.hero .inner>*:nth-child(4){animation-delay:.42s}
+@keyframes heroFade{from{opacity:0;transform:translateY(28px);filter:blur(5px)}to{opacity:1;transform:none;filter:blur(0)}}
+.hero .stats>*{opacity:0;transform:translateY(18px);animation:statIn .7s cubic-bezier(.22,.68,.24,1) forwards}
+.hero .stats>*:nth-child(1){animation-delay:.55s}
+.hero .stats>*:nth-child(2){animation-delay:.63s}
+.hero .stats>*:nth-child(3){animation-delay:.71s}
+.hero .stats>*:nth-child(4){animation-delay:.79s}
+@keyframes statIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.card{opacity:0;transform:translateY(30px);transition:transform .22s ease,box-shadow .22s ease,opacity .6s ease}
+.card.in{opacity:1;transform:translateY(0)}
+.card:hover{transform:translateY(-5px)}
+nav{transition:background .3s ease}
+nav.scrolled{background:rgba(13,15,19,.97)}
+.btn.orange{position:relative;overflow:hidden}
+.btn.orange::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:shine 3.2s ease-in-out infinite}
+@keyframes shine{0%{left:-80%}55%{left:130%}100%{left:130%}}
+.banner{transition:box-shadow .3s ease}
+.banner:hover{box-shadow:0 22px 60px rgba(10,16,28,.35)}
+@media (prefers-reduced-motion:reduce){
+  #px{display:none}
+  .hero .inner>*,.hero .stats>*{animation:none;opacity:1;transform:none}
+  .card{opacity:1;transform:none;transition:none}
+  .btn.orange::after{display:none}
+  .hero::after{display:none}
+}
 </style>
 </head>
 <body>
@@ -119,6 +153,7 @@ footer a:hover{text-decoration:underline}
 </nav>
 
 <header class="hero">
+  <canvas id="px" aria-hidden="true"></canvas>
   <div class="inner">
     <div class="eyebrow">TECY · PERSONAL PROJECTS</div>
     <h1>TECY 项目总汇</h1>
@@ -129,9 +164,9 @@ footer a:hover{text-decoration:underline}
     </div>
   </div>
   <div class="stats">
-    <div><b>5</b><span>个人应用</span></div>
-    <div><b>7</b><span>公开仓库</span></div>
-    <div><b>12</b><span>可下载安装包</span></div>
+    <div><b data-n="5">0</b><span>个人应用</span></div>
+    <div><b data-n="7">0</b><span>公开仓库</span></div>
+    <div><b data-n="12">0</b><span>可下载安装包</span></div>
     <div><b>约 0.9GB</b><span>下载资源总量</span></div>
   </div>
 </header>
@@ -181,6 +216,77 @@ footer a:hover{text-decoration:underline}
   <div>© 2026 tsy-yyds · TECY 项目总汇</div>
   <div><a href="https://github.com/tsy-yyds" target="_blank" rel="noopener">GitHub 主页</a> · <a href="https://github.com/tsy-yyds/tecy-project-summary" target="_blank" rel="noopener">本页源码</a></div>
 </footer>
+
+
+<script>
+(function () {
+  var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hero = document.querySelector('.hero');
+
+  /* 粒子背景 */
+  if (!rm && hero) {
+    var cv = document.getElementById('px'), ctx = cv.getContext('2d');
+    function resize(){ cv.width = cv.offsetWidth; cv.height = cv.offsetHeight; }
+    resize(); window.addEventListener('resize', resize);
+    var N = 46, ps = [];
+    for (var i = 0; i < N; i++) {
+      ps.push({
+        x: Math.random(), y: Math.random(),
+        r: 0.7 + Math.random() * 1.9,
+        s: 0.00035 + Math.random() * 0.0011,
+        a: 0.08 + Math.random() * 0.45,
+        c: Math.random() < 0.5 ? '162,214,255' : '120,190,255'
+      });
+    }
+    (function loop(){
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      for (var i = 0; i < N; i++) {
+        var p = ps[i];
+        p.y -= p.s; p.x += Math.sin((p.y + i * 7) * 2.2) * 0.0005;
+        if (p.y < -0.03) { p.y = 1.03; p.x = Math.random(); }
+        var tw = 0.55 + 0.45 * Math.sin(Date.now() / 1300 + i * 1.9);
+        ctx.beginPath();
+        ctx.arc(p.x * cv.width, p.y * cv.height, p.r, 0, 6.2832);
+        ctx.fillStyle = 'rgba(' + p.c + ',' + (p.a * tw).toFixed(3) + ')';
+        ctx.fill();
+      }
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  /* 统计数字滚动 */
+  if (!rm) {
+    document.querySelectorAll('.stats b[data-n]').forEach(function (el) {
+      var target = parseInt(el.getAttribute('data-n'), 10), d = 1100, start = null;
+      (function f(ts){
+        if (!start) start = ts;
+        var k = Math.min((ts - start) / d, 1), e = 1 - Math.pow(1 - k, 3);
+        el.textContent = Math.round(target * e);
+        if (k < 1) requestAnimationFrame(f);
+      })(performance.now());
+    });
+  }
+
+  /* 卡片滚动渐显 */
+  var cards = document.querySelectorAll('.card');
+  if ('IntersectionObserver' in window && !rm) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12 });
+    cards.forEach(function (c, i) { c.style.transitionDelay = (i % 3) * 70 + 'ms'; io.observe(c); });
+  } else {
+    cards.forEach(function (c) { c.classList.add('in'); });
+  }
+
+  /* 导航滚动加深 */
+  var nav = document.querySelector('nav');
+  function navState(){ nav.classList.toggle('scrolled', window.scrollY > 40); }
+  window.addEventListener('scroll', navState, { passive: true });
+  navState();
+})();
+</script>
 
 </body>
 </html>
